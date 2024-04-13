@@ -6,6 +6,7 @@ function TableHeader() {
       <tr>
         <th>Name</th>
         <th>Job</th>
+        <th>Action</th> {/* Added a new column for delete button */}
       </tr>
     </thead>
   );
@@ -26,11 +27,7 @@ function TableBody(props) {
     );
   });
 
-  return (
-    <tbody>
-      {rows}
-    </tbody>
-  );
+  return <tbody>{rows}</tbody>;
 }
 
 function Table(props) {
