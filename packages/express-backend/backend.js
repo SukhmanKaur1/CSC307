@@ -82,6 +82,54 @@ app.post("/users", (req, res) => {
 });
 
 
+//function to delte a user by ID
+const deleteUserbyID = (id) => {
+    for (let i = 0; i < users["users_list"].length; i++) {
+        if (users["users_list"][i]["id"] === id) {
+            users["users_list"].splice(i, 1);
+            return "Success";
+        }
+    }
+    return "User not found";
+};
+
+app.delete("/users/:id", (req, res) => {
+    const id = req.params["id"];
+    const result = deleteUserbyID(id);
+    res.send(result);
+});
+
+
+//action to get all users that match a given name and a given job
+const findUsersByNameAndJob = (name, job) => {
+    const matchingUsers = [];
+    for (let i = 0; i < users["users_list"].length; i++) {
+        if (users["users_list"][i]["name"] === name && users["users_list"][i]["job"] === job) {
+            matchingUsers.push(users["users_list"][i]);
+        }
+    }
+    return matchingUsers;
+};
+
+app.get("/users", (req, res) => {
+    const name = req.query.name;
+    const job = req.query.job;
+
+    if (name != undefined && job != undefined) {
+        const result = findUsersByNameAndJob(name, job);
+        res.send(result);
+    }
+    else if (name != undefined) {
+        let result = findUserByName(name);
+        result = { users_list: result };
+        res.send(result);
+    }
+    else {
+        res.send(users);
+    }
+});
+
+
 
 app.listen(port, () => {
     console.log(
