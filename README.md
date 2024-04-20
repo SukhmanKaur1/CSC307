@@ -1,1 +1,1 @@
-Hello, this is Sukhman Kaur and testing 
+Hello, this is Sukhman Kaur
