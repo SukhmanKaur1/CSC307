@@ -6,22 +6,22 @@ function TableHeader() {
       <tr>
         <th>Name</th>
         <th>Job</th>
-        <th>Action</th> {/* Added a new column for delete button */}
+        <th>ID</th>
+        <th>Action</th>
       </tr>
     </thead>
   );
 }
 
 function TableBody(props) {
-  const rows = props.characterData.map((row, index) => {
+  const rows = props.characterData.map((row) => {
     return (
-      <tr key={index}>
+      <tr key={row.id}>
         <td>{row.name}</td>
         <td>{row.job}</td>
+        <td>{row.id}</td>
         <td>
-          <button onClick={() => props.removeCharacter(index)}>
-            Delete
-          </button>
+          <button onClick={() => props.removeCharacter(row.id)}>Delete</button>
         </td>
       </tr>
     );
