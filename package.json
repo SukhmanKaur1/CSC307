@@ -8,9 +8,11 @@
     "start": "cd packages/react-frontend && npm run dev"
   },
   "author": "",
-  "license": "ISC"
-,
-    "workspaces": [
-        "packages/*"
-    ]
+  "license": "ISC",
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "mongoose": "^8.3.3"
+  }
 }
